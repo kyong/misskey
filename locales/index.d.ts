@@ -97,6 +97,10 @@ export interface Locale extends ILocale {
      */
     "settings": string;
     /**
+     * このサーバーを支援する
+     */
+    "donation": string;
+    /**
      * 通知の設定
      */
     "notificationSettings": string;
