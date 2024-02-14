@@ -23,6 +23,7 @@ export interface Locale {
     "noNotifications": string;
     "instance": string;
     "settings": string;
+    "donation": string;
     "notificationSettings": string;
     "basicSettings": string;
     "otherSettings": string;
