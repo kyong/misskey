@@ -9,11 +9,6 @@ export interface ILocale {
     [_: string]: string | ParameterizedString | ILocale;
 }
 export interface Locale extends ILocale {
-		/**
-		 * ※chunchunのみ
-		 * このサーバーを支援する
-		 */
-    "donation": string;
     /**
      * 日本語
      */
@@ -101,7 +96,10 @@ export interface Locale extends ILocale {
      * 設定
      */
     "settings": string;
-
+    /**
+     * このサーバーを支援する
+     */
+    "donation": string;
     /**
      * 通知の設定
      */
