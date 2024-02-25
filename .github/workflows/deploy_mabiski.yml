@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
           source: "misskey.tar,./*"
-          target: "/var/www/mabis.ki/misskey/"
+          target: "/var/www/mabi.ski/misskey/"
 
   deploy-on-vps:
     runs-on: ubuntu-latest
@@ -58,6 +58,6 @@ jobs:
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
           script: |
-            docker load -i /var/www/mabis.ki/misskey/misskey.tar
+            docker load -i /var/www/mabi.ski/misskey/misskey.tar
             docker-compose down
-            docker-compose -f /var/www/mabis.ki/docker-compose.yml up -d
+            docker-compose -f /var/www/mabi.ski/misskey/docker-compose.yml up -d
