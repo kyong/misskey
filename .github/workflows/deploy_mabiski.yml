@@ -30,10 +30,12 @@ jobs:
 
       - name: Build Docker images
         run: |
+          cp ./docker-compose_example.yml ./docker-compose.yml
           docker-compose build
       - name: Save Docker images
         run: |
-          docker save -o misskey.tar misskey/front:latest
+          docker ps
+          docker save -o misskey.tar misskey/misskey:latest
           chmod 644 misskey.tar
           ls -l
       # - name: Transfer Docker images and docker-compose.yml to VPS
