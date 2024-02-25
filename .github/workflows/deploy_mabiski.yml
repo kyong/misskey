@@ -35,30 +35,29 @@ jobs:
       - name: Save Docker images
         run: |
           docker images
-          docker save -o misskey.tar misskey/misskey:latest
+          docker save -o misskey.tar misskey/misskey_web:latest
           chmod 644 misskey.tar
           ls -l
-      # - name: Transfer Docker images and docker-compose.yml to VPS
-      #   uses: appleboy/scp-action@master
-      #   with:
-      #     host: ${{ secrets.REMOTE_HOST }}
-      #     username: ${{ secrets.REMOTE_USER }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     source: "front.tar,api.tar,docker-compose.yml,front/*,api/*"
-      #     target: "/var/www/sabakampa/"
+      - name: Transfer Docker images and docker-compose.yml to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.MABISKI_REMOTE_HOST }}
+          username: ${{ secrets.MABISKI_REMOTE_USER }}
+          key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
+          source: "misskey.tar./*"
+          target: "/var/www/mabis.ki/misskey/"
 
-  # deploy-on-vps:
-  #   runs-on: ubuntu-latest
-  #   needs: build-and-save-docker-images
-  #   steps:
-  #     - name: Deploy to VPS
-  #       uses: appleboy/ssh-action@master
-  #       with:
-  #         host: ${{ secrets.REMOTE_HOST }}
-  #         username: ${{ secrets.REMOTE_USER }}
-  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
-  #         script: |
-  #           docker load -i /var/www/sabakampa/front.tar
-  #           docker load -i /var/www/sabakampa/api.tar
-  #           docker-compose down
-  #           docker-compose -f /var/www/sabakampa/docker-compose.yml up -d
+  deploy-on-vps:
+    runs-on: ubuntu-latest
+    needs: build-and-save-docker-images
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MABISKI_REMOTE_HOST }}
+          username: ${{ secrets.MABISKI_REMOTE_USER }}
+          key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
+          script: |
+            docker load -i /var/www/mabis.ki/misskey/misskey.tar
+            docker-compose down
+            docker-compose -f /var/www/mabis.ki/docker-compose.yml up -d
