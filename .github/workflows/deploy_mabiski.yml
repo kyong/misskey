@@ -44,7 +44,7 @@ jobs:
           host: ${{ secrets.MABISKI_REMOTE_HOST }}
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
-          source: "misskey.tar./*"
+          source: "misskey.tar,./*"
           target: "/var/www/mabis.ki/misskey/"
 
   deploy-on-vps:
