@@ -17,9 +17,9 @@ jobs:
 
       - name: Replace secrets
         run: |
-          sed -i "s/db: misskey/db: ${{ secrets.MABISKI_POSTGRES_DB }}/g" default.yml
-          sed -i "s/user: example-misskey-user/user: ${{ secrets.MABISKI_POSTGRES_USER }}/g" default.yml
-          sed -i "s/pass: example-misskey-pass/pass: ${{ secrets.MABISKI_POSTGRES_PASSWORD }}/g" default.yml
+          sed -i "s/db: misskey/db: ${{ secrets.MABISKI_POSTGRES_DB }}/g" .config/default.yml
+          sed -i "s/user: example-misskey-user/user: ${{ secrets.MABISKI_POSTGRES_USER }}/g" .config/default.yml
+          sed -i "s/pass: example-misskey-pass/pass: ${{ secrets.MABISKI_POSTGRES_PASSWORD }}/g" .config/default.yml
 
       - name: Set settings
         run: |
