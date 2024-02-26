@@ -34,8 +34,8 @@ jobs:
           docker-compose build
       - name: Save Docker images
         run: |
-          docker images
-          docker save -o misskey.tar misskey_web:latest
+          docker tag misskey_web:latest misskey-web:latest
+          docker save -o misskey.tar
           chmod 644 misskey.tar
           ls -l
       - name: Transfer Docker images and docker-compose.yml to VPS
@@ -58,6 +58,6 @@ jobs:
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
           script: |
-            docker load -i /var/www/mabi.ski/misskey/misskey.tar misskey-web:latest
+            docker load -i /var/www/mabi.ski/misskey/misskey.tar
             docker compose down
             docker compose -f /var/www/mabi.ski/misskey/docker-compose.yml up -d
