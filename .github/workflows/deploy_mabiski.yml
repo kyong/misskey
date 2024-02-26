@@ -35,7 +35,7 @@ jobs:
       - name: Save Docker images
         run: |
           docker images
-          docker save -o misskey.tar misskey_web:latest
+          docker save -o misskey.tar misskey-web:latest
           chmod 644 misskey.tar
           ls -l
       - name: Transfer Docker images and docker-compose.yml to VPS
