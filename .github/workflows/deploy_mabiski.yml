@@ -58,6 +58,6 @@ jobs:
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
           script: |
-            docker load -i /var/www/mabi.ski/misskey/misskey.tar misskey_web:latest
+            docker load -i /var/www/mabi.ski/misskey/misskey.tar misskey-web:latest
             docker compose down
             docker compose -f /var/www/mabi.ski/misskey/docker-compose.yml up -d
