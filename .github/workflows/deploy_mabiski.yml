@@ -45,7 +45,7 @@ jobs:
           host: ${{ secrets.MABISKI_REMOTE_HOST }}
           username: ${{ secrets.MABISKI_REMOTE_USER }}
           key: ${{ secrets.MABISKI_SSH_PRIVATE_KEY }}
-          source: "misskey.tar,docker-compose.yml"
+          source: "misskey.tar,docker-compose.yml,.config/default.yml,.config/docker.env"
           target: "/var/www/mabi.ski/misskey/"
 
   deploy-on-vps:
