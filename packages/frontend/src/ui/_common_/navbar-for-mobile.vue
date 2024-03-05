@@ -36,6 +36,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<MkA :class="$style.item" :activeClass="$style.active" to="/settings">
 			<i :class="$style.itemIcon" class="ti ti-settings ti-fw"></i><span :class="$style.itemText">{{ i18n.ts.settings }}</span>
 		</MkA>
+		<a v-tooltip.noDelay.right="'wiki'" :class="$style.item" :activeClass="$style.active" href="https://wiki.chunchun.world/" target="_blank">
+			<i :class="$style.itemIcon" class="ti ti-book ti-fw"></i><span :class="$style.itemText">Wiki</span> <i class="ti ti-external-link"></i>
+		</a>
+		<a v-tooltip.noDelay.right="i18n.ts.donation" :class="$style.item" :activeClass="$style.active" href="https://sabakampa.com/p/chunchun.world" target="_blank">
+			<i :class="$style.itemIcon" class="ti ti-heart-up ti-fw"></i><span :class="$style.itemText">{{ i18n.ts.donation }}</span> <i class="ti ti-external-link"></i>
+		</a>
 	</div>
 	<div :class="$style.bottom">
 		<button class="_button" :class="$style.post" data-cy-open-post-form @click="os.post">
