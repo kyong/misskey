@@ -34,7 +34,7 @@ importers:
         specifier: 11.0.1
         version: 11.0.1
       html2canvas:
-        specifier: ^1.4.1
+        specifier: 1.4.1
         version: 1.4.1
       ignore-walk:
         specifier: 7.0.0
