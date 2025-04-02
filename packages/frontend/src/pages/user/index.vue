@@ -23,6 +23,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<XFlashs v-else-if="tab === 'flashs'" key="flashs" :user="user"/>
 				<XGallery v-else-if="tab === 'gallery'" key="gallery" :user="user"/>
 				<XRaw v-else-if="tab === 'raw'" key="raw" :user="user"/>
+				<XCard v-else-if="tab === 'card'" key="card" :user="user"/>
 			</MkHorizontalSwipe>
 		</div>
 		<MkError v-else-if="error" @retry="fetchUser()"/>
@@ -54,6 +55,7 @@ const XPages = defineAsyncComponent(() => import('./pages.vue'));
 const XFlashs = defineAsyncComponent(() => import('./flashs.vue'));
 const XGallery = defineAsyncComponent(() => import('./gallery.vue'));
 const XRaw = defineAsyncComponent(() => import('./raw.vue'));
+const XCard = defineAsyncComponent(() => import('./card.vue'));
 
 // contextは非ログイン状態の情報しかないためログイン時は利用できない
 const CTX_USER = !$i && assertServerContext(serverContext, 'user') ? serverContext.user : null;
@@ -145,6 +147,10 @@ const headerTabs = computed(() => user.value ? [{
 	key: 'raw',
 	title: 'Raw',
 	icon: 'ti ti-code',
+}, {
+	key: 'card',
+	title: i18n.ts.card || 'Card',
+	icon: 'ti ti-id',
 }] : []);
 
 definePageMetadata(() => ({
