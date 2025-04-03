@@ -246,19 +246,18 @@ onUnmounted(() => {
 					background-color: var(--MI_THEME-bg);
 					border-radius: 4px;
 					width: 310px;
-					height: 45px;
-					padding: 8px 12px;
+					height: 64px;
+					padding: 4px 8px;
 					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
 					text-align: left;
 					opacity: 0.8;
 					box-shadow: 1px 1px 3px var(--MI_THEME-shadow);
-
 					> .role {
+						display: inline-block;
+						white-space: nowrap;
 						border: solid 1px var(--color, var(--MI_THEME-divider));
 						border-radius: 999px;
-						margin-right: 4px;
+						margin: 4px 0 0 4px;
 						padding: 3px 8px;
 					}
 				}
